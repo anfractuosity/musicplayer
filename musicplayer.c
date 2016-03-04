@@ -85,16 +85,24 @@ int remap_level_to_signed_16_bit(float v)
     	return r;
 }
 
-int main(){
-	double *data = malloc(BUFFER_LEN*sizeof(double)) ;
-	SNDFILE      *infile;
-	SF_INFO		sfinfo ;
-	int			readcount ;
-	const char	*infilename = "Taylor2.wav" ;
+	
+int main ( int argc, char **argv ) {
 
-	if (! (infile = sf_open (infilename, SFM_READ, &sfinfo))){   
+	if(argc != 2){
+		printf("Need to pass audio file sampled at 1 000 000 Hz\n");
+		return 1;
+	}else{
+		printf("Attempting to load file: %s\n",argv[1]);
+	}
+	
+	double *data = malloc(BUFFER_LEN*sizeof(double)) ;
+	SNDFILE         *infile;
+	SF_INFO		sfinfo ;
+	int		readcount ;
+
+	if (! (infile = sf_open (argv[1], SFM_READ, &sfinfo))){   
 		/* Open failed so print an error message. */
-        	printf ("Not able to open input file %s.\n", infilename) ;
+        	printf ("Not able to open input file %s.\n", argv[1]) ;
         	/* Print the error message from libsndfile. */
         	puts (sf_strerror (NULL)) ;
         	return  1 ;
