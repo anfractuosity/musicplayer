@@ -72,13 +72,10 @@ static inline void pdm_signal(int *pdm,int len) {
 // From http://beej.us/blog/data/digital-sound/
 int remap_level_to_signed_16_bit(float v)
 {
-
 	long r;
-
 	// clamp values:
 	if (v > 1.0) { v = 1.0; }
 	else if (v < -1.0) { v = -1.0; }
-
 	v += 1.0;      // remap from [-1.0,1.0] to [0.0,2.0]
 	v /= 2;        // remap from [0.0,2.0] to [0.0,1.0]
     	r = v * 65535; // remap from [0.0,1.0] to [0,65535]
