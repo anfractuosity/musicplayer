@@ -63,7 +63,6 @@ static inline void pdm_signal(int *pdm,int len) {
 			}
 		else
 			while (mach_absolute_time() < end) {
-
 			}
 	}
 }
@@ -92,7 +91,6 @@ int main ( int argc, char **argv ) {
 		printf("Attempting to load file: %s\n",argv[1]);
 	}
 	
-	double *data = malloc(BUFFER_LEN*sizeof(double)) ;
 	SNDFILE         *infile;
 	SF_INFO		sfinfo ;
 	int		readcount ;
@@ -110,9 +108,14 @@ int main ( int argc, char **argv ) {
         	return  1 ;
         } 
 
+	double *data = malloc(sfinfo.frames*sizeof(double)) ;
+	
 	unsigned int c;
-   	readcount = sf_read_double (infile, data, BUFFER_LEN);
+   	
+	readcount = sf_read_double (infile, data, BUFFER_LEN);
+	
 	unsigned int *nout = malloc(sizeof(int)*readcount);
+	
 	for(c=0;c<readcount;c++){
 		nout[c] = remap_level_to_signed_16_bit(data[c]);
 	}
@@ -120,7 +123,7 @@ int main ( int argc, char **argv ) {
 	unsigned int* out = pdm2(nout,readcount);
 	
 	printf("Out>>>>>>>>\n");
+
 	pdm_signal(out,readcount);
 
-	exit(0);
 }
