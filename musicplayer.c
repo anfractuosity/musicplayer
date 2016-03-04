@@ -20,10 +20,6 @@ __m128i reg_one;
 
 #define NSEC_PER_SEC	1000000000	/* nanoseconds per second */
 
-/* Include this header file to use functions from libsndfile. */
-#define		BUFFER_LEN	1024*1024*500
-
-
 uint64_t mach_absolute_time(){
 	struct timespec start, end;
 	clock_gettime(CLOCK_MONOTONIC, &start); /* mark start time */
@@ -112,7 +108,7 @@ int main ( int argc, char **argv ) {
 	
 	unsigned int c;
    	
-	readcount = sf_read_double (infile, data, BUFFER_LEN);
+	readcount = sf_read_double (infile, data,sfinfo.frames);
 	
 	unsigned int *nout = malloc(sizeof(int)*readcount);
 	
