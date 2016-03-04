@@ -13,8 +13,10 @@ gcc musicplayer.c -lm -lsndfile -o musicplayer
 sox in.wav -r 1000000 out.wav
 ./musicplayer out.wav
 ```
+##Video
 
-Please can someone test this, I pick up a lot of noise, but i'm pretty sure I can hear Taylor Swift through my radio
+https://youtu.be/xSj5skknXWg
+
 
 ###Requirements
 
