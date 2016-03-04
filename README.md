@@ -15,4 +15,4 @@ Please can someone test this, i pick up a lot of noise, but i'm pretty sure i ca
 ###Requirements
 
 * Sox
-* libsndfile
+* libsndfile - http://www.mega-nerd.com/libsndfile/
