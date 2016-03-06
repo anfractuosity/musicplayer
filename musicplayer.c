@@ -21,7 +21,6 @@ __m128i reg_one;
 uint64_t mach_absolute_time(){
 	struct timespec start, end;
 	clock_gettime(CLOCK_MONOTONIC, &start); /* mark start time */
-
 	return (uint64_t)start.tv_sec * NSEC_PER_SEC + start.tv_nsec;
 }
 
@@ -46,6 +45,7 @@ unsigned int * pdm(unsigned int *x,int len){
 
 static inline void pdm_signal(int *pdm,int len) {
 	int i = 0;
+
 	for (i=0;i<len;i++){
 		double time = 1.0 / 1000000.0;
 		uint64_t start = mach_absolute_time();
