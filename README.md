@@ -15,10 +15,11 @@ You simply use sox to convert your audio to a high sample rate such as 1MHz, as 
 high rate is necessary for PDM).
 
 ```
-gcc musicplayer.c -lsndfile -o musicplayer
+make
 sox in.wav -r 1000000 out.wav
 ./musicplayer out.wav
 ```
+
 ##Video
 
 https://youtu.be/xSj5skknXWg
