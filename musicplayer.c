@@ -6,8 +6,6 @@
 
 #include <stdio.h>
 #include <emmintrin.h>
-//#include <mach/mach_traps.h>
-//#include <mach/mach_time.h>
 #include <math.h>
 #include<stdint.h>
 #include<time.h>
@@ -27,7 +25,8 @@ uint64_t mach_absolute_time(){
 	return (uint64_t)start.tv_sec * NSEC_PER_SEC + start.tv_nsec;
 }
 
-unsigned int * pdm2(unsigned int *x,int len){
+// Derrived from http://dlbeer.co.nz/articles/pdm.html
+unsigned int * pdm(unsigned int *x,int len){
 	unsigned *y=malloc(len*sizeof(int));
 	unsigned int n = 0; 
  	unsigned int quant_error = 0;
@@ -116,7 +115,7 @@ int main ( int argc, char **argv ) {
 		nout[c] = remap_level_to_signed_16_bit(data[c]);
 	}
 
-	unsigned int* out = pdm2(nout,readcount);
+	unsigned int* out = pdm(nout,readcount);
 	
 	printf("Out>>>>>>>>\n");
 
