@@ -43,11 +43,11 @@ unsigned int * pdm(unsigned int *x,int len){
 	return y;
 }
 
-static inline void pdm_signal(int *pdm,int len) {
+static inline void pdm_signal(int *pdm,int len,int samplerate) {
 	int i = 0;
 
 	for (i=0;i<len;i++){
-		double time = 1.0 / 1000000.0;
+		double time = 1.0 / (double)samplerate;
 		uint64_t start = mach_absolute_time();
 		uint64_t end = start + time * NSEC_PER_SEC; 
 
@@ -101,7 +101,8 @@ int main ( int argc, char **argv ) {
 	if (sfinfo.channels > 1){
 		printf ("Not able to process more than 1 channels\n") ;
         	return  1 ;
-        } 
+        }
+
 
 	double *data = malloc(sfinfo.frames*sizeof(double)) ;
 	
@@ -117,8 +118,8 @@ int main ( int argc, char **argv ) {
 
 	unsigned int* out = pdm(nout,readcount);
 	
-	printf("Out>>>>>>>>\n");
+	printf("Playing song at Sample Rate: %dHz\n",sfinfo.samplerate);
 
-	pdm_signal(out,readcount);
+	pdm_signal(out,readcount,sfinfo.samplerate);
 
 }
