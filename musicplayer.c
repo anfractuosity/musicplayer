@@ -80,7 +80,7 @@ int remap_level_to_signed_16_bit(float v)
 int main ( int argc, char **argv ) {
 
 	if(argc != 2){
-		printf("Need to pass audio file sampled at 1 000 000 Hz\n");
+		printf("Need to pass audio file sampled at around 1 000 000 Hz\n");
 		return 1;
 	}else{
 		printf("Attempting to load file: %s\n",argv[1]);
