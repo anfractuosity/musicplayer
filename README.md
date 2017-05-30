@@ -20,12 +20,12 @@ sox in.wav -r 1000000 out.wav
 ./musicplayer out.wav
 ```
 
-##Video
+## Video
 
 https://youtu.be/xSj5skknXWg
 
 
-###Requirements
+### Requirements
 
 * Sox
 * libsndfile - http://www.mega-nerd.com/libsndfile/
