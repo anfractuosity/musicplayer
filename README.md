@@ -20,11 +20,6 @@ sox in.wav -r 1000000 out.wav
 ./musicplayer out.wav
 ```
 
-## Video
-
-https://youtu.be/xSj5skknXWg
-
-
 ### Requirements
 
 * Sox
